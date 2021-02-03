@@ -1,2 +1,2 @@
-# gilshw91.github.io
+# React App - Google Maps API 
 Displays the users' current location
