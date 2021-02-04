@@ -4,7 +4,7 @@ import Display from "./Display";
 function MapContainer() {
   const googleMapsKey = "AIzaSyCdQymwSuF0P6Ee-ffX0ZtWjpJdpaT5eLk";
   const ipData = "dcb19aafdd3accd0ca61b014f91a6cc5888d57f4f703a9758da3751e";
-  const MAP_MODE = "place"; // options: place, view, directions, streetview, search
+  const MapMode = "place"; // options: place, view, directions, streetview, search
   const [isLoading, setIsLoading] = useState(true);
   const [fetchError, setFetchError] = useState("");
   const [currentLocation, setCurrentLocation] = useState(null); // Contains the respones from the ipData about the users' location
@@ -37,9 +37,9 @@ function MapContainer() {
       isLoading={isLoading}
       fetchError={fetchError}
       currentLocation={currentLocation}
-      MAP_MODE={MAP_MODE}
+      MapMode={MapMode}
       googleMapsKey={googleMapsKey}
-      OnDisplayClicked={(view) => setDisplayOption(view)}
+      onDisplayClicked={(view) => setDisplayOption(view)}
       viewBy={viewBy}
     />
   );

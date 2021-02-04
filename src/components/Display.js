@@ -4,9 +4,9 @@ const Display = ({
   isLoading,
   fetchError,
   currentLocation,
-  MAP_MODE,
+  MapMode,
   googleMapsKey,
-  OnDisplayClicked,
+  onDisplayClicked,
   viewBy,
 }) => {
   return (
@@ -33,7 +33,7 @@ const Display = ({
               height="100%"
               frameBorder="0"
               style={{ border: "0" }}
-              src={`https://www.google.com/maps/embed/v1/${MAP_MODE}?key=${googleMapsKey}&q=${viewBy}`}
+              src={`https://www.google.com/maps/embed/v1/${MapMode}?key=${googleMapsKey}&q=${viewBy}`}
               allowFullScreen
             ></iframe>
 
@@ -43,19 +43,21 @@ const Display = ({
                   <input
                     type="radio"
                     name="display"
+                    id="city"
                     value="city"
-                    onClick={(view) => OnDisplayClicked("city")}
+                    onClick={() => onDisplayClicked("city")}
                     defaultChecked
                   />
-                  View by city
+                  <label htmlFor="city">View by city</label>
                   <br />
                   <input
                     type="radio"
+                    id="latlng"
                     name="display"
                     value="latlng"
-                    onClick={(view) => OnDisplayClicked("latlng")}
+                    onClick={() => onDisplayClicked("latlng")}
                   />
-                  View exact location
+                  <label htmlFor="latlng">View exact location</label>
                 </div>
                 <hr />
                 <strong>Country: </strong>
@@ -72,14 +74,14 @@ const Display = ({
   );
 };
 
-Display.prototype = {
+Display.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   fetchError: PropTypes.string,
-  currentLocation: PropTypes.object.isRequired,
-  MAP_MODE: PropTypes.string.isRequired,
+  currentLocation: PropTypes.object,
+  MapMode: PropTypes.string.isRequired,
   googleMapsKey: PropTypes.string.isRequired,
-  OnDisplayClicked: PropTypes.func.isRequired,
-  viewBy: PropTypes.string.isRequired,
+  onDisplayClicked: PropTypes.func.isRequired,
+  viewBy: PropTypes.string,
 };
 
 export default Display;
