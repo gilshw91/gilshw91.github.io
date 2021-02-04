@@ -33,15 +33,25 @@ function MapContainer() {
       : `${currentLocation.latitude},${currentLocation.longitude}`);
 
   return (
-    <Display
-      isLoading={isLoading}
-      fetchError={fetchError}
-      currentLocation={currentLocation}
-      MapMode={MapMode}
-      googleMapsKey={googleMapsKey}
-      onDisplayClicked={(view) => setDisplayOption(view)}
-      viewBy={viewBy}
-    />
+    <>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : fetchError ? (
+        <div>Fetch error: {fetchError}</div>
+      ) : currentLocation && currentLocation.message ? (
+        <div>Failed to load map: {currentLocation.message}</div>
+      ) : (
+        <Display
+          isLoading={isLoading}
+          fetchError={fetchError}
+          currentLocation={currentLocation}
+          MapMode={MapMode}
+          googleMapsKey={googleMapsKey}
+          onDisplayClicked={(view) => setDisplayOption(view)}
+          viewBy={viewBy}
+        />
+      )}
+    </>
   );
 }
 
